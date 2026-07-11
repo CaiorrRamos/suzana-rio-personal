@@ -1,0 +1,157 @@
+import { motion, useScroll, useTransform } from "framer-motion";
+import { Quote, Star } from "lucide-react";
+import suzana from "../../assets/suzana-rio.webp";
+import { Container } from "../Container/Container";
+
+const easeOut = [0.16, 1, 0.3, 1] as const;
+
+const titleContainer = {
+  hidden: {},
+  visible: {
+    transition: { staggerChildren: 0.08, delayChildren: 0.05 },
+  },
+};
+
+const titleLine = {
+  hidden: { opacity: 0, y: 28 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: easeOut } },
+};
+
+const scaleIn = {
+  hidden: { opacity: 0, scale: 0.94 },
+  visible: { opacity: 1, scale: 1, transition: { duration: 0.6, ease: easeOut } },
+};
+
+const slideLeft = {
+  hidden: { opacity: 0, x: -34 },
+  visible: { opacity: 1, x: 0, transition: { duration: 0.6, ease: easeOut } },
+};
+
+const slideRight = {
+  hidden: { opacity: 0, x: 34 },
+  visible: { opacity: 1, x: 0, transition: { duration: 0.6, ease: easeOut } },
+};
+
+const fadeUp = {
+  hidden: { opacity: 0, y: 28 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: easeOut } },
+};
+
+export function Hero() {
+  const { scrollY } = useScroll();
+  const imageY = useTransform(scrollY, [0, 600], [0, 26]);
+
+  return (
+    <section id="inicio" className="relative min-h-screen overflow-hidden bg-white pt-24 transition-colors duration-300 dark:bg-[#070b1a] sm:pt-28 lg:pt-30">
+      <Container className="relative flex min-h-[calc(100vh-5rem)] max-w-[1280px] flex-col justify-start pb-0">
+        <div className="relative mx-auto flex min-h-[700px] w-full flex-col items-center sm:min-h-[750px] lg:min-h-[725px]">
+          <motion.div
+            variants={titleContainer}
+            initial="hidden"
+            animate="visible"
+            className="relative z-20 mx-auto w-full text-center"
+          >
+            <h1 className="relative mx-auto max-w-[1120px] leading-none">
+              <motion.span
+                variants={titleLine}
+                className="block text-[clamp(3.25rem,5.85vw,6.25rem)] font-bold tracking-[-0.04em] text-[#FFD400]"
+              >
+                Suzana Rio,
+              </motion.span>
+              <motion.span
+                variants={titleLine}
+                className="relative z-10 -mt-1 block text-[clamp(3.1rem,6.25vw,6.75rem)] font-extrabold tracking-[-0.055em] text-[#111111] transition-colors duration-300 dark:text-[#FBFCFC] sm:-mt-3 lg:-mt-5"
+              >
+                Personal Trainer
+              </motion.span>
+            </h1>
+          </motion.div>
+
+          <motion.div
+            variants={scaleIn}
+            initial="hidden"
+            animate="visible"
+            style={{ y: imageY }}
+            className="absolute bottom-[-285px] left-1/2 z-0 h-[540px] w-[82vw] max-w-[900px] -translate-x-1/2 rounded-t-[999px] bg-[radial-gradient(circle_at_54%_17%,#1f6dff_0%,#0261ce_38%,#05288f_100%)] shadow-[0_24px_34px_rgba(17,24,53,0.2)] sm:bottom-[-320px] sm:h-[660px] lg:bottom-[-380px] lg:h-[800px]"
+          />
+
+          <motion.img
+            variants={scaleIn}
+            initial="hidden"
+            animate="visible"
+            style={{ y: imageY }}
+            src={suzana}
+            alt="Suzana Rio Personal Trainer"
+            loading="eager"
+            className="absolute left-[44%] top-[108px] z-30 w-[min(116vw,750px)] -translate-x-1/2 object-contain drop-shadow-[0_16px_24px_rgba(17,24,53,0.13)] sm:left-[44.5%] sm:top-[98px] sm:w-[min(94vw,845px)] lg:left-[44%] lg:top-[86px] lg:w-[900px]"
+          />
+
+          <motion.aside
+            variants={slideLeft}
+            initial="hidden"
+            animate="visible"
+            className="absolute left-0 top-[45%] z-40 hidden max-w-[218px] text-left text-[#111835] transition-colors duration-300 dark:text-[#FBFCFC] md:block lg:-left-14 xl:-left-24"
+          >
+            <Quote className="mb-5 fill-current text-current" size={42} strokeWidth={2.5} />
+            <p className="text-[1rem] font-semibold leading-[1.34] tracking-[-0.015em] lg:text-[1.08rem]">
+              Meu trabalho é ajudar pessoas a desenvolverem força, funcionalidade e confiança para viverem melhor em todas as fases da vida.
+            </p>
+          </motion.aside>
+
+          <motion.aside
+            variants={slideRight}
+            initial="hidden"
+            animate="visible"
+            className="absolute right-0 top-[46%] z-40 hidden min-w-[280px] text-right text-[#111835] transition-colors duration-300 dark:text-[#FBFCFC] md:block lg:-right-14 xl:-right-24"
+          >
+            <div className="mb-4 flex justify-end gap-1.5 text-[#FFD400]">
+              {Array.from({ length: 5 }).map((_, index) => (
+                <Star key={index} size={27} fill="currentColor" strokeWidth={2.5} />
+              ))}
+            </div>
+            <p className="text-[3rem] font-extrabold leading-none tracking-[-0.04em] lg:text-[3.35rem]">+20 Anos</p>
+            <p className="mt-2 text-xl font-medium leading-none">de Experiência</p>
+          </motion.aside>
+
+          <motion.div
+            variants={fadeUp}
+            initial="hidden"
+            animate="visible"
+            className="absolute left-1/2 top-[84%] z-50 flex w-[min(84vw,340px)] -translate-x-1/2 flex-col items-stretch gap-1.5 rounded-[1.6rem] border border-white/45 bg-white/20 p-1.5 shadow-[inset_0_1px_18px_rgba(255,255,255,0.44),0_16px_36px_rgba(17,24,53,0.16)] backdrop-blur-xl sm:top-[83%] sm:w-auto sm:flex-row sm:items-center sm:rounded-full"
+          >
+            <a
+              href="#contato"
+              className="inline-flex items-center justify-center gap-2 rounded-full bg-[#0261CE] px-5 py-2.5 text-base font-bold text-white transition duration-300 hover:scale-[1.04] hover:bg-[#0255b5] sm:px-6 sm:text-lg"
+            >
+              Conversar <span className="text-2xl leading-none">→</span>
+            </a>
+            <a
+              href="#sobre"
+              className="inline-flex items-center justify-center rounded-full px-5 py-2.5 text-base font-medium text-white transition duration-300 hover:scale-[1.04] hover:bg-white/12 sm:px-6 sm:text-lg"
+            >
+              Sobre mim
+            </a>
+          </motion.div>
+        </div>
+
+        <motion.div variants={titleContainer} initial="hidden" animate="visible" className="relative z-40 grid gap-4 pb-10 md:hidden">
+          <motion.div variants={fadeUp} className="rounded-3xl bg-[#FBFCFC] px-5 py-5 text-left shadow-[0_18px_40px_rgba(17,24,53,0.08)] transition-colors duration-300 dark:bg-white/10">
+            <Quote className="mb-3 fill-current text-[#111835] dark:text-[#FBFCFC]" size={34} />
+            <p className="text-base font-semibold leading-7 text-[#111835] dark:text-[#FBFCFC]">
+              Meu trabalho é ajudar pessoas a desenvolverem força, funcionalidade e confiança para viverem melhor.
+            </p>
+          </motion.div>
+          <motion.div variants={fadeUp} className="rounded-3xl bg-[#FBFCFC] px-5 py-5 text-center shadow-[0_18px_40px_rgba(17,24,53,0.08)] transition-colors duration-300 dark:bg-white/10">
+            <div className="mb-3 flex justify-center gap-1.5 text-[#FFD400]">
+              {Array.from({ length: 5 }).map((_, index) => (
+                <Star key={index} size={23} fill="currentColor" />
+              ))}
+            </div>
+            <p className="text-4xl font-extrabold text-[#111835] dark:text-[#FBFCFC]">+20 Anos</p>
+            <p className="text-base font-medium text-[#111835] dark:text-[#FBFCFC]">de Experiência</p>
+          </motion.div>
+        </motion.div>
+      </Container>
+    </section>
+  );
+}
