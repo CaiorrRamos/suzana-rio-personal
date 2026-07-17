@@ -59,9 +59,9 @@ function GoldenBolt({ className }: GoldenBoltProps) {
 
 export function Services() {
   return (
-    <section id="servicos" className="relative z-40 -mt-28 px-0 pb-20 sm:-mt-32 lg:-mt-36">
+    <section id="servicos" className="relative z-40 -mt-24 px-0 pb-16 sm:-mt-28 sm:pb-20 lg:-mt-36">
       <Container>
-        <div className="relative overflow-hidden rounded-[40px] bg-primary px-5 py-16 shadow-[0_26px_70px_rgba(17,24,53,0.24)] sm:px-10 lg:px-12">
+        <div className="relative overflow-hidden rounded-[28px] bg-primary px-5 py-12 shadow-[0_26px_70px_rgba(17,24,53,0.24)] sm:rounded-[36px] sm:px-10 sm:py-16 lg:rounded-[40px] lg:px-12">
           <img
             src={servicesBackground}
             alt=""
@@ -73,12 +73,12 @@ export function Services() {
           <BackgroundPattern />
           <div aria-hidden="true" className="pointer-events-none absolute -left-32 top-24 h-72 w-72 rounded-full bg-secondary/14 blur-3xl" />
           <div aria-hidden="true" className="pointer-events-none absolute -right-24 bottom-16 h-80 w-80 rounded-full bg-secondary/12 blur-3xl" />
-          <GoldenBolt className="pointer-events-none absolute -left-12 top-[31%] z-[1] h-44 w-28 -rotate-[24deg] opacity-95 sm:-left-8 sm:h-56 sm:w-36" />
+          <GoldenBolt className="pointer-events-none absolute -left-16 top-[31%] z-[1] h-36 w-24 -rotate-[24deg] opacity-70 sm:-left-8 sm:h-56 sm:w-36 sm:opacity-95" />
           <GoldenBolt className="pointer-events-none absolute left-[47%] top-[16%] z-[1] hidden h-28 w-20 rotate-[6deg] opacity-90 md:block" />
-          <GoldenBolt className="pointer-events-none absolute -right-10 bottom-[19%] z-[1] h-48 w-28 rotate-[18deg] opacity-95 sm:h-60 sm:w-36" />
-          <div className="relative z-10 mb-16 grid gap-8 md:grid-cols-[1fr_1fr] md:items-start">
-            <h2 className="text-4xl font-normal text-white md:text-5xl">Meus Serviços</h2>
-            <p className="max-w-xl justify-self-start text-base font-medium leading-6 text-white md:justify-self-end md:text-lg">
+          <GoldenBolt className="pointer-events-none absolute -right-16 bottom-[19%] z-[1] h-40 w-24 rotate-[18deg] opacity-75 sm:-right-10 sm:h-60 sm:w-36 sm:opacity-95" />
+          <div className="relative z-10 mb-10 grid gap-5 sm:mb-14 md:grid-cols-[1fr_1fr] md:items-start">
+            <h2 className="text-3xl font-normal text-white sm:text-4xl md:text-5xl">Meus Serviços</h2>
+            <p className="max-w-xl justify-self-start text-sm font-medium leading-6 text-white sm:text-base md:justify-self-end md:text-lg">
               Minha missão é mostrar que atividade física não precisa ser sofrimento. Ela pode ser um caminho possível, sustentável e transformador.
             </p>
           </div>
