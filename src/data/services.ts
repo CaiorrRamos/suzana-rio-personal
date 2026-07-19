@@ -1,7 +1,6 @@
 import srOnline from "../assets/sr-online.webp";
 import srPersonal from "../assets/sr-personal.webp";
 import srRun from "../assets/sr-run.webp";
-import suzanaBox from "../assets/suzana-box.webp";
 
 export interface Service {
   id: number;
@@ -32,11 +31,5 @@ export const services: Service[] = [
     description: "Presença técnica em provas, grupos e experiências esportivas.",
     image: srRun,
     href: "https://wa.me/5581982881368?text=Ol%C3%A1%20Suzaninha!%20Quero%20saber%20mais%20sobre%20os%20Planos%20de%20Acompanhamento%20Online!%20",
-  },
-  {
-    id: 4,
-    title: "Treinamento Funcional",
-    description: "Força, mobilidade e condicionamento para o seu dia a dia.",
-    image: suzanaBox,
   },
 ];

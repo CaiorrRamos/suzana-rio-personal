@@ -87,13 +87,12 @@ export function Services() {
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, amount: 0.2 }}
-            className="relative z-10 -mx-3 flex snap-x items-stretch gap-6 overflow-x-auto px-3 pb-10 pt-4 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+            className="relative z-10 -mx-3 flex snap-x snap-mandatory items-stretch gap-5 overflow-x-auto px-3 pb-10 pt-4 [scrollbar-width:none] sm:gap-6 [&::-webkit-scrollbar]:hidden"
           >
             {services.map((service) => <ServiceCard key={service.id} service={service} />)}
           </motion.div>
           <div className="relative z-10 mx-auto mt-2 flex w-max gap-2">
             <span className="h-2 w-12 rounded-full bg-secondary" />
-            <span className="h-2 w-2 rounded-full bg-white" />
             <span className="h-2 w-2 rounded-full bg-white" />
             <span className="h-2 w-2 rounded-full bg-white" />
           </div>

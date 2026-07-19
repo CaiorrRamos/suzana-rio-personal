@@ -16,7 +16,7 @@ export const ServiceCard = memo(function ServiceCard({ service }: ServiceCardPro
     <motion.article
       variants={staggerItem}
       whileHover={{ y: -4 }}
-      className="group relative flex h-[390px] min-w-[260px] shrink-0 basis-[84%] flex-col overflow-visible rounded-[24px] sm:h-[430px] sm:min-w-[292px] sm:rounded-[28px] md:basis-[calc((100%_-_48px)/3)]"
+      className="group relative flex h-[380px] min-w-[260px] shrink-0 basis-[88%] snap-center flex-col overflow-visible rounded-[24px] sm:h-[430px] sm:min-w-[292px] sm:basis-[72%] sm:rounded-[28px] md:basis-[calc((100%_-_48px)/3)]"
     >
       <div className="relative flex h-full flex-col overflow-hidden rounded-[24px] border border-white/42 bg-white/8 shadow-[0_22px_60px_rgba(0,0,0,0.16)] backdrop-blur transition duration-300 group-hover:border-white/58 group-hover:bg-white/12 group-hover:shadow-[0_28px_70px_rgba(0,0,0,0.22)] sm:rounded-[28px]">
         <div aria-hidden="true" className="pointer-events-none absolute inset-x-0 top-0 h-28 bg-gradient-to-b from-white/12 to-transparent opacity-70" />

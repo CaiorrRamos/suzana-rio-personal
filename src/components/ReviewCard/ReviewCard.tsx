@@ -11,7 +11,7 @@ export const ReviewCard = memo(function ReviewCard({ review }: ReviewCardProps) 
   const backgroundImage = services[(review.id - 1) % services.length]?.image;
 
   return (
-    <article className="relative min-w-[300px] overflow-hidden rounded-[28px] border border-white/18 bg-white/12 p-5 text-white shadow-[0_24px_80px_rgba(0,0,0,0.22)] transition duration-300 hover:-translate-y-2 md:min-w-[380px]">
+    <article className="relative min-w-[82vw] snap-center overflow-hidden rounded-[24px] border border-white/18 bg-white/12 p-5 text-white shadow-[0_24px_80px_rgba(0,0,0,0.22)] transition duration-300 hover:-translate-y-2 sm:min-w-[340px] sm:rounded-[28px] md:min-w-[380px]">
       <img
         src={backgroundImage}
         alt=""

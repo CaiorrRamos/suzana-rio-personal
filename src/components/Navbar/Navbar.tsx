@@ -13,6 +13,12 @@ const navItems = [
   { label: "Contato", href: "#contato" },
 ];
 
+const mobileNavItems = [
+  { label: "Início", href: "#inicio" },
+  { label: "Serviços", href: "#servicos" },
+  { label: "Contato", href: "#contato" },
+];
+
 export function Navbar() {
   const { isScrolled } = useNavbar();
   const [theme, setTheme] = useState<"light" | "dark">("light");
@@ -42,8 +48,8 @@ export function Navbar() {
     >
       <nav
         className={clsx(
-          "mx-auto grid max-w-[1160px] grid-cols-[1fr_auto_1fr] items-center rounded-full border border-white/15 bg-[linear-gradient(100deg,#111835_0%,#111835_48%,#0261CE_100%)] shadow-[0_16px_30px_rgba(17,24,53,0.28)] backdrop-blur-2xl transition-all duration-300",
-          isScrolled ? "min-h-[64px] px-4" : "min-h-[76px] px-5",
+          "mx-auto grid max-w-[1160px] grid-cols-[auto_1fr_auto] items-center gap-2 rounded-full border border-white/15 bg-[linear-gradient(100deg,#111835_0%,#111835_48%,#0261CE_100%)] shadow-[0_16px_30px_rgba(17,24,53,0.28)] backdrop-blur-2xl transition-all duration-300 md:grid-cols-[1fr_auto_1fr] md:gap-0",
+          isScrolled ? "min-h-[58px] px-2.5 md:min-h-[64px] md:px-4" : "min-h-[64px] px-3 md:min-h-[76px] md:px-5",
         )}
       >
         <div className="hidden items-center gap-2 md:flex">
@@ -59,8 +65,20 @@ export function Navbar() {
         </div>
 
         <a href="#inicio" aria-label="Suzana Rio" className="justify-self-start md:justify-self-center">
-          <img src={logo} alt="Suzana Rio" className={clsx("w-auto transition-all duration-300", isScrolled ? "h-9" : "h-12")} />
+          <img src={logo} alt="Suzana Rio" className={clsx("w-auto transition-all duration-300", isScrolled ? "h-8 md:h-9" : "h-10 md:h-12")} />
         </a>
+
+        <div className="flex min-w-0 items-center justify-center gap-0.5 md:hidden">
+          {mobileNavItems.map((item) => (
+            <a
+              key={item.href}
+              href={item.href}
+              className="rounded-full px-2 py-2 text-[0.68rem] font-semibold text-white/78 transition hover:bg-primary hover:text-white focus:outline-none focus-visible:bg-primary focus-visible:text-white"
+            >
+              {item.label}
+            </a>
+          ))}
+        </div>
 
         <div className="flex items-center justify-end gap-2">
           <div className="hidden items-center gap-2 md:flex">
@@ -76,7 +94,7 @@ export function Navbar() {
             aria-pressed={theme === "dark"}
             onClick={toggleTheme}
             className={clsx(
-              "group flex h-10 w-20 items-center rounded-full bg-dark px-2 transition hover:scale-[1.04]",
+              "group flex h-10 w-[4.25rem] items-center rounded-full bg-dark px-1.5 transition hover:scale-[1.04] md:w-20 md:px-2",
               theme === "dark" ? "justify-start" : "justify-end",
             )}
           >

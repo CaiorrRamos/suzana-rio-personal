@@ -8,11 +8,11 @@ export function Footer() {
     <footer id="contato" className="bg-dark py-8 text-white">
       <Container>
         <div className="rounded-[28px] bg-dark">
-          <div className="flex flex-col gap-5 border-b border-white/12 pb-10 md:flex-row md:items-center md:justify-between">
-            <h2 className="text-4xl font-bold md:text-5xl">Entrar em Contato</h2>
-            <PrimaryButton href="https://wa.me/5577983443636" variant="primary">Whatsapp</PrimaryButton>
+          <div className="flex flex-col gap-5 border-b border-white/12 pb-8 md:flex-row md:items-center md:justify-between md:pb-10">
+            <h2 className="text-3xl font-bold md:text-5xl">Entrar em Contato</h2>
+            <PrimaryButton href="https://wa.me/5577983443636" variant="primary" className="w-full sm:w-auto">Whatsapp</PrimaryButton>
           </div>
-          <div className="grid gap-10 border-b border-white/12 py-10 md:grid-cols-[1.4fr_0.7fr_0.7fr_1fr]">
+          <div className="grid gap-8 border-b border-white/12 py-8 md:grid-cols-[1.4fr_0.7fr_0.7fr_1fr] md:gap-10 md:py-10">
             <div>
               <img src={logo} alt="Suzana Rio" loading="lazy" className="mb-5 h-14 w-auto" />
               <p className="max-w-sm text-sm leading-7 text-white/62">Movimento com propósito para uma vida mais forte, ativa e feliz. Mais de 20 anos transformando vidas.</p>
