@@ -1,6 +1,5 @@
 import { motion, useScroll, useTransform } from "framer-motion";
 import { Quote, Star } from "lucide-react";
-import { useState } from "react";
 import suzana from "../../assets/suzana-rio.webp";
 import { Container } from "../Container/Container";
 
@@ -38,15 +37,40 @@ const fadeUp = {
   visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: easeOut } },
 };
 
+function YellowStroke({ className, variant = "short" }: { className: string; variant?: "short" | "arc" }) {
+  return (
+    <motion.svg
+      aria-hidden="true"
+      viewBox="0 0 120 90"
+      className={className}
+      animate={{ y: [0, -7, 0], rotate: [0, 1.5, 0] }}
+      transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
+      fill="none"
+    >
+      {variant === "short" ? (
+        <>
+          <path d="M23 49C38 23 62 14 93 18" stroke="#FFD400" strokeWidth="8" strokeLinecap="round" />
+          <path d="M54 73C55 49 65 31 84 20" stroke="#FFD400" strokeWidth="8" strokeLinecap="round" />
+        </>
+      ) : (
+        <>
+          <path d="M31 56C43 29 63 17 91 19" stroke="#FFD400" strokeWidth="8" strokeLinecap="round" />
+          <path d="M76 10C57 23 50 39 53 62" stroke="#FFD400" strokeWidth="8" strokeLinecap="round" />
+          <path d="M96 36C105 35 112 38 117 44" stroke="#FFD400" strokeWidth="8" strokeLinecap="round" />
+        </>
+      )}
+    </motion.svg>
+  );
+}
+
 export function Hero() {
   const { scrollY } = useScroll();
   const imageY = useTransform(scrollY, [0, 600], [0, 26]);
-  const [activeAction, setActiveAction] = useState(0);
 
   return (
-    <section id="inicio" className="relative min-h-[720px] overflow-hidden bg-white pt-24 transition-colors duration-300 dark:bg-[#070b1a] sm:min-h-[760px] sm:pt-28 lg:min-h-screen lg:pt-30">
-      <Container className="relative flex min-h-[calc(100vh-5rem)] max-w-[1280px] flex-col justify-start pb-0 max-lg:min-h-[620px] max-sm:min-h-[600px]">
-        <div className="relative mx-auto flex min-h-[620px] w-full flex-col items-center sm:min-h-[650px] lg:min-h-[725px]">
+    <section id="inicio" className="relative min-h-screen overflow-hidden bg-white pt-24 sm:pt-28 lg:pt-30">
+      <Container className="relative flex min-h-[calc(100vh-5rem)] max-w-[1280px] flex-col justify-start pb-0">
+        <div className="relative mx-auto flex min-h-[700px] w-full flex-col items-center sm:min-h-[750px] lg:min-h-[725px]">
           <motion.div
             variants={titleContainer}
             initial="hidden"
@@ -56,16 +80,18 @@ export function Hero() {
             <h1 className="relative mx-auto max-w-[1120px] leading-none">
               <motion.span
                 variants={titleLine}
-                className="block text-[clamp(2.9rem,13vw,6.25rem)] font-bold text-[#FFD400] sm:text-[clamp(4.35rem,9vw,6.25rem)] lg:text-[clamp(4.8rem,5.85vw,6.25rem)]"
+                className="block text-[clamp(3.25rem,5.85vw,6.25rem)] font-bold tracking-[-0.04em] text-[#FFD400]"
               >
                 Suzana Rio,
               </motion.span>
               <motion.span
                 variants={titleLine}
-                className="relative z-10 -mt-1 block text-[clamp(2.7rem,12vw,6.75rem)] font-extrabold text-[#111835] transition-colors duration-300 dark:text-[#FBFCFC] sm:-mt-3 sm:text-[clamp(4.2rem,9.5vw,6.75rem)] lg:-mt-5 lg:text-[clamp(5rem,6.25vw,6.75rem)]"
+                className="relative z-10 -mt-1 block text-[clamp(3.1rem,6.25vw,6.75rem)] font-extrabold tracking-[-0.055em] text-[#111111] sm:-mt-3 lg:-mt-5"
               >
                 Personal Trainer
               </motion.span>
+              <YellowStroke className="absolute right-[12%] top-[-12%] hidden h-20 w-24 lg:block" variant="arc" />
+              <YellowStroke className="absolute left-[20%] top-[60%] hidden h-24 w-28 -rotate-12 lg:block" />
             </h1>
           </motion.div>
 
@@ -74,7 +100,7 @@ export function Hero() {
             initial="hidden"
             animate="visible"
             style={{ y: imageY }}
-            className="absolute bottom-[-185px] left-1/2 z-0 h-[430px] w-[105vw] max-w-[520px] -translate-x-1/2 rounded-t-[999px] bg-[radial-gradient(circle_at_54%_17%,#1f6dff_0%,#0261ce_38%,#05288f_100%)] shadow-[0_24px_34px_rgba(17,24,53,0.2)] sm:bottom-[-270px] sm:h-[610px] sm:max-w-[760px] md:w-[86vw] lg:bottom-[-380px] lg:h-[800px] lg:max-w-[900px]"
+            className="absolute bottom-[-325px] left-1/2 z-0 h-[620px] w-[94vw] max-w-[1080px] -translate-x-1/2 rounded-t-[999px] bg-[radial-gradient(circle_at_54%_17%,#1f6dff_0%,#0261ce_38%,#05288f_100%)] shadow-[0_26px_38px_rgba(17,24,53,0.22)] sm:bottom-[-365px] sm:h-[755px] lg:bottom-[-430px] lg:h-[915px]"
           />
 
           <motion.img
@@ -85,17 +111,17 @@ export function Hero() {
             src={suzana}
             alt="Suzana Rio Personal Trainer"
             loading="eager"
-            className="absolute left-[45%] top-[128px] z-30 w-[min(116vw,600px)] -translate-x-1/2 object-contain drop-shadow-[0_16px_24px_rgba(17,24,53,0.13)] sm:left-[44.5%] sm:top-[102px] sm:w-[min(92vw,780px)] lg:left-[44%] lg:top-[86px] lg:w-[900px]"
+            className="absolute left-1/2 top-[108px] z-30 w-[min(350vw,1080px)] -translate-x-1/2 object-contain drop-shadow-[0_16px_24px_rgba(17,24,53,0.13)] sm:top-[98px] sm:w-[min(94vw,845px)] lg:top-[86px] lg:w-[900px]"
           />
 
           <motion.aside
             variants={slideLeft}
             initial="hidden"
             animate="visible"
-            className="absolute left-0 top-[45%] z-40 hidden max-w-[218px] text-left text-[#111835] transition-colors duration-300 dark:text-[#FBFCFC] lg:block lg:-left-14 xl:-left-24"
+            className="absolute left-0 top-[45%] z-40 hidden max-w-[218px] text-left text-[#111835] md:block lg:-left-8 xl:-left-14"
           >
-            <Quote className="mb-5 fill-current text-current" size={42} strokeWidth={2.5} />
-            <p className="text-[1.08rem] font-semibold leading-[1.34]">
+            <Quote className="mb-5 fill-[#111835] text-[#111835]" size={42} strokeWidth={2.5} />
+            <p className="text-[1rem] font-semibold leading-[1.34] tracking-[-0.015em] lg:text-[1.08rem]">
               Meu trabalho é ajudar pessoas a desenvolverem força, funcionalidade e confiança para viverem melhor em todas as fases da vida.
             </p>
           </motion.aside>
@@ -104,14 +130,14 @@ export function Hero() {
             variants={slideRight}
             initial="hidden"
             animate="visible"
-            className="absolute right-0 top-[46%] z-40 hidden min-w-[280px] text-right text-[#111835] transition-colors duration-300 dark:text-[#FBFCFC] lg:block lg:-right-14 xl:-right-24"
+            className="absolute right-0 top-[46%] z-40 hidden min-w-[280px] text-right text-[#111835] md:block lg:-right-8 xl:-right-14"
           >
             <div className="mb-4 flex justify-end gap-1.5 text-[#FFD400]">
               {Array.from({ length: 5 }).map((_, index) => (
                 <Star key={index} size={27} fill="currentColor" strokeWidth={2.5} />
               ))}
             </div>
-            <p className="text-[3.35rem] font-extrabold leading-none">+20 Anos</p>
+            <p className="text-[3rem] font-extrabold leading-none tracking-[-0.04em] lg:text-[3.35rem]">+20 Anos</p>
             <p className="mt-2 text-xl font-medium leading-none">de Experiência</p>
           </motion.aside>
 
@@ -119,36 +145,40 @@ export function Hero() {
             variants={fadeUp}
             initial="hidden"
             animate="visible"
-            className="absolute left-1/2 top-[80%] z-50 grid w-[min(92vw,360px)] -translate-x-1/2 grid-cols-2 rounded-full border border-white/45 bg-white/20 p-1.5 shadow-[inset_0_1px_18px_rgba(255,255,255,0.44),0_16px_36px_rgba(17,24,53,0.16)] backdrop-blur-xl sm:top-[81%] sm:w-[390px] lg:top-[84%]"
+            className="absolute left-1/2 top-[62%] z-50 flex w-[min(88vw,390px)] -translate-x-1/2 flex-col items-stretch gap-2 rounded-[2rem] border border-white/45 bg-white/20 p-2 shadow-[inset_0_1px_18px_rgba(255,255,255,0.44),0_16px_36px_rgba(17,24,53,0.16)] backdrop-blur-xl sm:top-[61%] sm:w-auto sm:flex-row sm:items-center sm:rounded-full"
           >
-            <motion.span
-              aria-hidden="true"
-              animate={{ x: `${activeAction * 100}%` }}
-              transition={{ type: "spring", stiffness: 380, damping: 34 }}
-              className="absolute left-1.5 top-1.5 h-[calc(100%-0.75rem)] w-[calc(50%-0.375rem)] rounded-full bg-[#FFD400] shadow-[0_10px_22px_rgba(17,24,53,0.18)]"
-            />
             <a
               href="#contato"
-              onMouseEnter={() => setActiveAction(0)}
-              onFocus={() => setActiveAction(0)}
-              className={`relative z-10 inline-flex min-h-11 items-center justify-center gap-1.5 rounded-full px-3 py-2.5 text-sm font-bold transition duration-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#FFD400]/70 sm:min-h-12 sm:px-4 sm:text-lg ${
-                activeAction === 0 ? "text-[#111835]" : "text-white hover:text-[#111835]"
-              }`}
+              className="inline-flex items-center justify-center gap-3 rounded-full bg-[#0261CE] px-7 py-3 text-lg font-bold text-white transition duration-300 hover:scale-[1.04] hover:bg-[#0255b5] sm:text-xl"
             >
-              Conversar <span className="text-xl leading-none sm:text-2xl">→</span>
+              Conversar <span className="text-3xl leading-none">→</span>
             </a>
             <a
               href="#sobre"
-              onMouseEnter={() => setActiveAction(1)}
-              onFocus={() => setActiveAction(1)}
-              className={`relative z-10 inline-flex min-h-11 items-center justify-center rounded-full px-3 py-2.5 text-sm font-bold transition duration-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#FFD400]/70 sm:min-h-12 sm:px-4 sm:text-lg ${
-                activeAction === 1 ? "text-[#111835]" : "text-white hover:text-[#111835]"
-              }`}
+              className="inline-flex items-center justify-center rounded-full px-7 py-3 text-lg font-medium text-white transition duration-300 hover:scale-[1.04] hover:bg-white/12 sm:text-xl"
             >
               Sobre mim
             </a>
           </motion.div>
         </div>
+
+        <motion.div variants={titleContainer} initial="hidden" animate="visible" className="relative z-40 grid gap-4 pb-10 md:hidden">
+          <motion.div variants={fadeUp} className="rounded-3xl bg-[#FBFCFC] px-5 py-5 text-left shadow-[0_18px_40px_rgba(17,24,53,0.08)]">
+            <Quote className="mb-3 fill-[#111835] text-[#111835]" size={34} />
+            <p className="text-base font-semibold leading-7 text-[#111835]">
+              Meu trabalho é ajudar pessoas a desenvolverem força, funcionalidade e confiança para viverem melhor.
+            </p>
+          </motion.div>
+          <motion.div variants={fadeUp} className="rounded-3xl bg-[#FBFCFC] px-5 py-5 text-center shadow-[0_18px_40px_rgba(17,24,53,0.08)]">
+            <div className="mb-3 flex justify-center gap-1.5 text-[#FFD400]">
+              {Array.from({ length: 5 }).map((_, index) => (
+                <Star key={index} size={23} fill="currentColor" />
+              ))}
+            </div>
+            <p className="text-4xl font-extrabold text-[#111835]">+20 Anos</p>
+            <p className="text-base font-medium text-[#111835]">de Experiência</p>
+          </motion.div>
+        </motion.div>
       </Container>
     </section>
   );
