@@ -9,6 +9,9 @@ interface ServiceCardProps {
 }
 
 export const ServiceCard = memo(function ServiceCard({ service }: ServiceCardProps) {
+  const actionClassName =
+    "absolute bottom-0 right-0 z-20 grid h-20 w-20 place-items-center rounded-full border border-white/10 bg-dark text-white shadow-[0_18px_40px_rgba(0,0,0,0.26)] transition duration-300 group-hover:scale-[1.04] group-hover:border-secondary/50 group-hover:bg-secondary group-hover:text-dark sm:h-[88px] sm:w-[88px] md:h-24 md:w-24";
+
   return (
     <motion.article
       variants={staggerItem}
@@ -18,7 +21,9 @@ export const ServiceCard = memo(function ServiceCard({ service }: ServiceCardPro
       <div className="relative flex h-full flex-col overflow-hidden rounded-[24px] border border-white/42 bg-white/8 shadow-[0_22px_60px_rgba(0,0,0,0.16)] backdrop-blur transition duration-300 group-hover:border-white/58 group-hover:bg-white/12 group-hover:shadow-[0_28px_70px_rgba(0,0,0,0.22)] sm:rounded-[28px]">
         <div aria-hidden="true" className="pointer-events-none absolute inset-x-0 top-0 h-28 bg-gradient-to-b from-white/12 to-transparent opacity-70" />
         <div className="flex h-[104px] shrink-0 items-center border-b border-white/28 px-6 py-5 sm:h-[116px] sm:px-8">
-          <h3 className="max-w-[12ch] text-[1.35rem] font-semibold leading-[1.12] text-white sm:text-[1.55rem] md:text-[1.65rem]">{service.title}</h3>
+          <h3 className="max-w-[12ch] text-[1.35rem] font-semibold leading-[1.12] text-white sm:text-[1.55rem] md:text-[1.65rem]">
+            {service.title}
+          </h3>
         </div>
 
         <div className="relative mt-auto flex h-[286px] shrink-0 items-end px-0 pb-0 pt-16 sm:h-[314px]">
@@ -36,13 +41,19 @@ export const ServiceCard = memo(function ServiceCard({ service }: ServiceCardPro
             <div className="absolute inset-0 bg-gradient-to-t from-primary/28 via-primary/0 to-white/8 transition duration-500 group-hover:from-primary/38" />
           </div>
 
-          <button
-            aria-label={`Ver ${service.title}`}
-            className="absolute bottom-0 right-0 z-20 grid h-20 w-20 place-items-center rounded-full border border-white/10 bg-dark text-white shadow-[0_18px_40px_rgba(0,0,0,0.26)] transition duration-300 group-hover:scale-[1.04] group-hover:border-secondary/50 group-hover:bg-secondary group-hover:text-dark sm:h-[88px] sm:w-[88px] md:h-24 md:w-24"
-          >
+          <span aria-hidden="true" className={actionClassName}>
             <ArrowUpRight size={40} strokeWidth={1.8} className="sm:h-[46px] sm:w-[46px]" />
-          </button>
+          </span>
         </div>
+        {service.href && (
+          <a
+            href={service.href}
+            target="_blank"
+            rel="noreferrer"
+            aria-label={`Ver ${service.title}`}
+            className="absolute inset-0 z-30 rounded-[24px] outline-none focus-visible:ring-2 focus-visible:ring-secondary focus-visible:ring-offset-2 focus-visible:ring-offset-primary sm:rounded-[28px]"
+          />
+        )}
       </div>
     </motion.article>
   );
