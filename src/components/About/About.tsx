@@ -9,11 +9,8 @@ export function About() {
     <section id="sobre" className="py-10 sm:py-12">
       <Container>
         <div className="grid items-center gap-8 rounded-[28px] bg-[#dbe8ff] px-5 py-10 transition-colors duration-300 dark:bg-white/8 sm:gap-10 sm:rounded-[40px] sm:px-10 sm:py-12 lg:grid-cols-2 lg:px-16">
-          <motion.div variants={fadeRight} initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.35 }} className="relative mx-auto flex w-full max-w-sm items-center justify-center">
-            <div className="relative flex h-[340px] w-full items-center justify-center overflow-hidden rounded-[26px] bg-primary shadow-[0_28px_70px_rgba(13,45,187,0.18)] sm:h-[460px] sm:rounded-[38px]">
-              <div className="absolute inset-4 rounded-[24px] bg-[radial-gradient(circle_at_50%_35%,#1f6dff_0%,#0261ce_48%,#03258f_100%)] sm:inset-6 sm:rounded-[34px]" />
-              <img src={suzanaBox} alt="Suzana Rio segurando celular" loading="lazy" className="relative z-10 h-full w-[92%] translate-x-1 object-contain object-center" />
-            </div>
+          <motion.div variants={fadeRight} initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.35 }} className="relative mx-auto flex h-[360px] w-full max-w-[430px] items-center justify-center overflow-visible sm:h-[500px] lg:justify-self-center">
+            <img src={suzanaBox} alt="Suzana Rio segurando celular" loading="lazy" className="h-full w-full scale-[1.12] object-contain object-center drop-shadow-[0_28px_42px_rgba(13,45,187,0.2)] sm:scale-[1.16]" />
           </motion.div>
           <motion.div variants={fadeLeft} initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.35 }}>
             <h2 className="text-3xl font-bold text-dark dark:text-[#FBFCFC] sm:text-4xl md:text-5xl">Sobre <span className="text-primary">mim</span></h2>

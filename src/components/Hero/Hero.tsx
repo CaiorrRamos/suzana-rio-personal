@@ -1,4 +1,5 @@
 import { motion, useScroll, useTransform } from "framer-motion";
+import { Quote, Star } from "lucide-react";
 import { useState } from "react";
 import suzana from "../../assets/suzana-rio.webp";
 import { Container } from "../Container/Container";
@@ -20,6 +21,16 @@ const titleLine = {
 const scaleIn = {
   hidden: { opacity: 0, scale: 0.94 },
   visible: { opacity: 1, scale: 1, transition: { duration: 0.6, ease: easeOut } },
+};
+
+const slideLeft = {
+  hidden: { opacity: 0, x: -34 },
+  visible: { opacity: 1, x: 0, transition: { duration: 0.6, ease: easeOut } },
+};
+
+const slideRight = {
+  hidden: { opacity: 0, x: 34 },
+  visible: { opacity: 1, x: 0, transition: { duration: 0.6, ease: easeOut } },
 };
 
 const fadeUp = {
@@ -51,7 +62,7 @@ export function Hero() {
               </motion.span>
               <motion.span
                 variants={titleLine}
-                className="relative z-10 -mt-1 block text-[clamp(2.7rem,12vw,6.75rem)] font-extrabold text-[#111111] transition-colors duration-300 dark:text-[#FBFCFC] sm:-mt-3 sm:text-[clamp(4.2rem,9.5vw,6.75rem)] lg:-mt-5 lg:text-[clamp(5rem,6.25vw,6.75rem)]"
+                className="relative z-10 -mt-1 block text-[clamp(2.7rem,12vw,6.75rem)] font-extrabold text-[#111835] transition-colors duration-300 dark:text-[#FBFCFC] sm:-mt-3 sm:text-[clamp(4.2rem,9.5vw,6.75rem)] lg:-mt-5 lg:text-[clamp(5rem,6.25vw,6.75rem)]"
               >
                 Personal Trainer
               </motion.span>
@@ -76,6 +87,33 @@ export function Hero() {
             loading="eager"
             className="absolute left-[45%] top-[128px] z-30 w-[min(116vw,600px)] -translate-x-1/2 object-contain drop-shadow-[0_16px_24px_rgba(17,24,53,0.13)] sm:left-[44.5%] sm:top-[102px] sm:w-[min(92vw,780px)] lg:left-[44%] lg:top-[86px] lg:w-[900px]"
           />
+
+          <motion.aside
+            variants={slideLeft}
+            initial="hidden"
+            animate="visible"
+            className="absolute left-0 top-[45%] z-40 hidden max-w-[218px] text-left text-[#111835] transition-colors duration-300 dark:text-[#FBFCFC] lg:block lg:-left-14 xl:-left-24"
+          >
+            <Quote className="mb-5 fill-current text-current" size={42} strokeWidth={2.5} />
+            <p className="text-[1.08rem] font-semibold leading-[1.34]">
+              Meu trabalho é ajudar pessoas a desenvolverem força, funcionalidade e confiança para viverem melhor em todas as fases da vida.
+            </p>
+          </motion.aside>
+
+          <motion.aside
+            variants={slideRight}
+            initial="hidden"
+            animate="visible"
+            className="absolute right-0 top-[46%] z-40 hidden min-w-[280px] text-right text-[#111835] transition-colors duration-300 dark:text-[#FBFCFC] lg:block lg:-right-14 xl:-right-24"
+          >
+            <div className="mb-4 flex justify-end gap-1.5 text-[#FFD400]">
+              {Array.from({ length: 5 }).map((_, index) => (
+                <Star key={index} size={27} fill="currentColor" strokeWidth={2.5} />
+              ))}
+            </div>
+            <p className="text-[3.35rem] font-extrabold leading-none">+20 Anos</p>
+            <p className="mt-2 text-xl font-medium leading-none">de Experiência</p>
+          </motion.aside>
 
           <motion.div
             variants={fadeUp}

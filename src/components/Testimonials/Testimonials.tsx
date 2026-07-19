@@ -1,6 +1,7 @@
 import { useEffect, useMemo, useState } from "react";
 import { motion } from "framer-motion";
 import { Quote } from "lucide-react";
+import servicesBackground from "../../assets/services-background.png";
 import { reviews } from "../../data/reviews";
 import { BackgroundPattern } from "../BackgroundPattern/BackgroundPattern";
 import { Container } from "../Container/Container";
@@ -22,6 +23,14 @@ export function Testimonials() {
     <section id="avaliacoes" className="py-12">
       <Container>
         <div className="relative overflow-hidden rounded-[40px] bg-primary py-16 shadow-[0_32px_90px_rgba(13,45,187,0.24)]">
+          <img
+            src={servicesBackground}
+            alt=""
+            aria-hidden="true"
+            loading="lazy"
+            className="pointer-events-none absolute inset-0 h-full w-full object-cover opacity-95"
+          />
+          <div aria-hidden="true" className="pointer-events-none absolute inset-0 bg-primary/34" />
           <BackgroundPattern />
           <motion.div variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.35 }} className="relative z-10 mx-auto mb-12 max-w-3xl px-6 text-center">
             <h2 className="text-4xl font-bold leading-tight text-white md:text-5xl">
